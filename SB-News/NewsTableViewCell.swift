@@ -25,6 +25,7 @@ class NewsTableViewCell: UITableViewCell {
     
     private let newsTitleLabel: UILabel = {
         let label = UILabel()
+        label.numberOfLines = 0
         label.font = .systemFont(ofSize: 25, weight: .medium)
         
         return label
@@ -32,6 +33,7 @@ class NewsTableViewCell: UITableViewCell {
     
     private let subtitleLabel: UILabel = {
         let label = UILabel()
+        label.numberOfLines = 0
         label.font = .systemFont(ofSize: 18, weight: .regular)
         
         return label
@@ -62,21 +64,21 @@ class NewsTableViewCell: UITableViewCell {
         newsTitleLabel.frame = CGRect(
             x: 10,
             y: 0,
-            width: contentView.frame.size.width - 200,
+            width: contentView.frame.size.width - 170,
             height: 70
         )
         
         subtitleLabel.frame = CGRect(
             x: 10,
             y: 70,
-            width: contentView.frame.size.width - 200,
+            width: contentView.frame.size.width - 170,
             height: contentView.frame.size.height / 2
         )
         
         newsImageView.frame = CGRect(
-            x: contentView.frame.size.width - 200,
+            x: contentView.frame.size.width - 150,
             y: 5,
-            width: 190,
+            width: 160,
             height: contentView.frame.size.height - 10
         )
     }
