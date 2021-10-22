@@ -7,13 +7,19 @@
 
 import UIKit
 
+// TableView
+// Custom Cell
+// API Caller
+// Open the News Story
+// Search for News Stories
+
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        title = "News"
+        view.backgroundColor = .systemBackground
     }
-
-
 }
 
