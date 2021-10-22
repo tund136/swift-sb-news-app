@@ -58,6 +58,27 @@ class NewsTableViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        
+        newsTitleLabel.frame = CGRect(
+            x: 10,
+            y: 0,
+            width: contentView.frame.size.width - 200,
+            height: 70
+        )
+        
+        subtitleLabel.frame = CGRect(
+            x: 10,
+            y: 70,
+            width: contentView.frame.size.width - 200,
+            height: contentView.frame.size.height / 2
+        )
+        
+        newsImageView.frame = CGRect(
+            x: contentView.frame.size.width - 200,
+            y: 5,
+            width: 190,
+            height: contentView.frame.size.height - 10
+        )
     }
     
     override func prepareForReuse() {
