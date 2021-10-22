@@ -41,7 +41,8 @@ class NewsTableViewCell: UITableViewCell {
     
     private let newsImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = .systemRed
+        imageView.clipsToBounds = true
+        imageView.backgroundColor = .secondarySystemBackground
         imageView.contentMode = .scaleAspectFill
         
         return imageView
@@ -85,6 +86,9 @@ class NewsTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        newsTitleLabel.text = nil
+        subtitleLabel.text = nil
+        newsImageView.image = nil
     }
     
     func configure(with viewModel: NewsTableViewCellViewModel) {
@@ -94,8 +98,18 @@ class NewsTableViewCell: UITableViewCell {
         // Image
         if let data = viewModel.imageData {
             newsImageView.image = UIImage(data: data)
-        } else {
+        } else if let url = viewModel.imageURL {
             // Fetch
+            URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
+                guard let data = data, error == nil
+                else {
+                    return
+                }
+                viewModel.imageData = data
+                DispatchQueue.main.async {
+                    self?.newsImageView.image = UIImage(data: data)
+                }
+            }.resume()
         }
     }
 }
